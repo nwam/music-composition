@@ -3,9 +3,12 @@
 # This script splits a sample into songs
 
 # check for arg
-if test "$#" -ne 2; then
-    echo "Illegal number of parameters"
+if test "$#" -ne 1; then
+    echo "Usage: " $0 "sample_file"
+    exit
 fi
+
+dir=`dirname $1`
 
 # turn \n into newlines and \\ into \
 sed -i 's/\\n/\n/g' $1
@@ -13,9 +16,10 @@ sed -i 's/\\\\/\\/g' $1
 
 # Split into files
 csplit $1 '/^X:/' '{*}';
+mv xx* $dir
 
 # rename files
-find . -type f  ! -name "*.*" -exec mv {} {}.abc \;
+find $dir -type f  ! -name "*.*" -exec mv {} {}.abc \;
 
 # run batch_abc2midi
 
