@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# This script splits a sample into songs
+
+# check for arg
+if test "$#" -ne 2; then
+    echo "Illegal number of parameters"
+fi
+
+# turn \n into newlines and \\ into \
+sed -i 's/\\n/\n/g' $1
+sed -i 's/\\\\/\\/g' $1
+
+# Split into files
+csplit $1 '/^X:/' '{*}';
+
+# rename files
+find . -type f  ! -name "*.*" -exec mv {} {}.abc \;
+
+# run batch_abc2midi
+
+# done
