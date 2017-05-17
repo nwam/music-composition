@@ -1,0 +1,3 @@
+After comparing these results (~65 songs) with those of the second test (~700 songs),
+it appears that about 65 songs is actually enough to get reasonable results (without needing to wait a day on this machine)
+It will at least be a sample size guidline for testing models in the meantime
