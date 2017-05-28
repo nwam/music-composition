@@ -1,3 +1,4 @@
 *.swp
 midi/*
 char-rnn-tensorflow*
+biaxial*
